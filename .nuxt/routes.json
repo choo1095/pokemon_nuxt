@@ -1,0 +1,8 @@
+[
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/admin/Documents/GitHub/pokemon_nuxt/pages/index.vue",
+    "chunkName": "pages/index"
+  }
+]
