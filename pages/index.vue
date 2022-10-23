@@ -1,20 +1,31 @@
 <template>
   <div>
-    <h1>Haha funny</h1>
-    <img src="~/assets/img/pokemon-splash.png" />
+    <Splash v-if="isShowSplashScreen" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import Splash from '@/components/Splash.vue';
 
 export default Vue.extend({
-  name: 'IndexPage'
+  name: 'IndexPage',
+  data() {
+    return {
+      isShowSplashScreen: true,
+    }
+  },
+  components: {
+    Splash,
+  },
+  async created() {
+    this.isShowSplashScreen = true;
+  },
+  async mounted() {
+    setTimeout(() => this.isShowSplashScreen = false, 3000);
+  }
 })
 </script>
 
 <style>
-body {
-  background-color: red;
-}
 </style>
