@@ -1,12 +1,23 @@
 <template>
-  <div>
-    <Splash v-if="isShowSplashScreen" />
+  <div class>
+    <!-- <Splash v-if="isShowSplashScreen" /> -->
+    <!-- <div v-else> -->
+      <div class="relative">
+        <PokeballSemicircleBackground heightClass="h-[675px]" />
+        <PokemonCarousel 
+          class="absolute top-32 left-0 right-0 mx-0" />
+      </div>
+      <div class="-mt-24  w-screen h-[1000px] bg-screenBgBlue bg-meteor-bg"></div>
+      
+    <!-- </div> -->
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import Splash from '@/components/Splash.vue';
+import PokeballSemicircleBackground from '@/components/reusable/PokeballSemicircleBackground.vue';
+import PokemonCarousel from '@/components/pokemon/PokemonCarousel.vue'
 
 export default Vue.extend({
   name: 'IndexPage',
@@ -17,6 +28,8 @@ export default Vue.extend({
   },
   components: {
     Splash,
+    PokeballSemicircleBackground,
+    PokemonCarousel,
   },
   async created() {
     this.isShowSplashScreen = true;

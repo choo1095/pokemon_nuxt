@@ -1,7 +1,11 @@
 <template>
-    <div class="w-full min-h-screen bg-offWhite">
-      <NavBar />  
-      <Nuxt />
+    <div class="min-h-screen bg-offWhite overflow-clip">
+      <header class="z-50 w-full fixed top-0">
+        <NavBar/>  
+      </header>
+      <body>
+        <Nuxt class="pt-16" />  
+      </body>
     </div>
 </template>
 

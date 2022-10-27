@@ -5,11 +5,13 @@
         </button>
 
         <div class="flex divide-x-2 items-center">
-            <button>login</button>
+            <button @click="onTapSignUp">Sign Up</button>
             <div class="flex">
-                <button>sign u</button>
+                <button @click="onTapLogin">Login</button>
                 <IconButtonWithIndicator 
                     :featherIconName="`shopping-cart`"
+                    :indicatorValue="1"
+                    @onClick="onTapCart"
                 />
             </div>    
         </div>
@@ -20,15 +22,26 @@
 import IconButtonWithIndicator from '@/components/reusable/IconButtonWithIndicator.vue';
 
 export default {
-  components: {
-    IconButtonWithIndicator
-  },
+    components: {
+        IconButtonWithIndicator,
+    },
+    methods: {
+        onTapCart() {
+            alert('no');
+        },
+        onTapSignUp() {
+            alert('sign up');
+        },
+        onTapLogin() {
+            alert('login');
+        }
+    },
 }
 </script>
 
 
 <style scoped>
 button {
-    @apply text-white text-sm;
+    @apply text-white text-sm font-light px-4;
 }
 </style>
