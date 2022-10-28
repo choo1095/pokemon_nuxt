@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid-cols-4 gap-10 mx-[10%] ">
+    <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-4 gap-10 mx-[10%] ">
         <PokemonCard 
           v-for="i in 16" 
           :key="i"

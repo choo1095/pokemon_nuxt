@@ -49,11 +49,11 @@ export default {
   methods: {
     setNumberOfItems() {
       const screenWidth = window.innerWidth;
-      if (screenWidth > 1024) {
+      if (screenWidth > 1280) { // xl
         this.numberOfItemsToShow = 4;
-      } else if (screenWidth > 768) {
+      } else if (screenWidth > 1024) { // lg 
         this.numberOfItemsToShow = 3;
-      } else if (screenWidth > 480) {
+      } else if (screenWidth > 768) { // md
         this.numberOfItemsToShow = 2;
       } else if (screenWidth > 0) {
         this.numberOfItemsToShow = 1;
