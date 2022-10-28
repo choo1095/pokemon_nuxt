@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-offWhite overflow-clip">
+    <div class="min-h-screen bg-offWhite">
       <header class="z-50 w-full fixed top-0">
         <NavBar/>  
       </header>

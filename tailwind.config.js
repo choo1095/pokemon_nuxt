@@ -21,6 +21,7 @@ module.exports = {
         'pokeballWhite': '#F1F1F1',
         'cardBg': '#F9F7F7',
         'screenBgBlue': '#7ADDE9',
+        'blue362056': '#362056',
       },
       fontSize: {
         'xss': ['10px', '0px'],
