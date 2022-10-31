@@ -22,6 +22,10 @@ module.exports = {
         'cardBg': '#F9F7F7',
         'screenBgBlue': '#7ADDE9',
         'blue362056': '#362056',
+        'black221F1E': '#221F1E',
+        'blue1C5DAB': '#1C5DAB',
+        'black303030': '#303030',
+        'greyA3A3A3': '#A3A3A3',
       },
       fontSize: {
         'xss': ['10px', '0px'],
@@ -35,6 +39,9 @@ module.exports = {
         'pokeball-outline': "url('@/assets/img/pokeball_outline.svg')",
         'right-arrow': "url('@/assets/img/right_arrow.svg')",
         'left-arrow': "url('@/assets/img/left_arrow.svg')",
+        'pikachu-wave': "url('@/assets/img/pikachu_wave.svg')",
+        'pikachu-teehee': "url('@/assets/img/pikachu_teehee.svg')",
+        'charmander-finger-guns': "url('@/assets/img/charmander_finger_guns.svg')"
       }
     }
   },
