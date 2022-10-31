@@ -31,6 +31,10 @@ module.exports = {
         'pokemon-ball-center': "url('@/assets/img/pokemon_ball_center.svg')",
         'placeholder-img': "url('@/assets/img/placeholder_image.png')",
         'meteor-bg': "url('@/assets/img/meteor.png')",
+        'pikachu-thumb': "url('@/assets/img/pikachu_thumb.svg')",
+        'pokeball-outline': "url('@/assets/img/pokeball_outline.svg')",
+        'right-arrow': "url('@/assets/img/right_arrow.svg')",
+        'left-arrow': "url('@/assets/img/left_arrow.svg')",
       }
     }
   },

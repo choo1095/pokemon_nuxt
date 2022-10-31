@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen h-fit bg-screenBgBlue bg-meteor-bg">
+  <div class="w-screen h-fit bg-screenBgBlue bg-meteor-bg pb-20">
     <!-- <Splash v-if="isShowSplashScreen" /> -->
     <!-- <div v-else> -->
       <div class="relative">

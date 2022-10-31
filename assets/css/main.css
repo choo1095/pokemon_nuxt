@@ -11,3 +11,7 @@
     stroke-linejoin: round;
     fill: none;
 }
+
+.bg-img-single {
+    @apply bg-no-repeat bg-cover;
+}
