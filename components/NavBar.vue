@@ -32,7 +32,9 @@ export default {
             })
         },
         onTapCart() {
-            alert('no');
+            this.$router.push({
+                path: 'cart'
+            })
         },
         onTapSignIn() {
             this.$router.push({

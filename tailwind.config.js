@@ -41,7 +41,9 @@ module.exports = {
         'left-arrow': "url('@/assets/img/left_arrow.svg')",
         'pikachu-wave': "url('@/assets/img/pikachu_wave.svg')",
         'pikachu-teehee': "url('@/assets/img/pikachu_teehee.svg')",
-        'charmander-finger-guns': "url('@/assets/img/charmander_finger_guns.svg')"
+        'charmander-finger-guns': "url('@/assets/img/charmander_finger_guns.svg')",
+        'pikachu-yeehaw': "url('@/assets/img/pikachu_yeehaw.svg')",
+        'bin': "url('@/assets/img/bin.svg')"
       }
     }
   },

@@ -1,5 +1,12 @@
 [
   {
+    "name": "cart",
+    "path": "/cart",
+    "component": "/Users/admin/Documents/GitHub/pokemon_nuxt/pages/cart.vue",
+    "chunkName": "pages/cart",
+    "_name": "_9dc480a4"
+  },
+  {
     "name": "signin",
     "path": "/signin",
     "component": "/Users/admin/Documents/GitHub/pokemon_nuxt/pages/signin.vue",

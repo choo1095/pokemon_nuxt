@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+}
+
 .feather {
     width: 24px;
     height: 24px;
@@ -48,4 +56,8 @@
 
 .red-button {
     @apply min-w-[150px] w-fit h-[40px] bg-primary rounded-md  text-white font-medium text-lg px-6 ;
+}
+
+.white-button {
+    @apply min-w-[150px] w-fit h-[40px] bg-white rounded-md  text-blue1C5DAB font-medium text-lg px-6 ;
 }
