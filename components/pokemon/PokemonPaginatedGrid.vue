@@ -19,7 +19,7 @@
                 title="Previous pokemanz"/>
             <PokeballButton 
                 @onClick="onTapNextPage"
-                :isPokeballOnRightSide="true"
+                :isPokeballOnLeftSide="true"
                 title="More pokemanz"/>
         </div>
     </div>

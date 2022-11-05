@@ -4,7 +4,7 @@
             <PokeballSemicircleBackground heightClass="h-[27rem]" />
             <div class="absolute top-28 left-0 right-0 flex flex-col text-center">
                 <h1 class="font-semibold text-5xl ">SIGN IN</h1>
-                <p class="mt-9 text-black221F1E text-base">Don't have an account? <button @click="onTapSignIn" class="text-blue1C5DAB">Sign Up</button></p>
+                <p class="mt-9 text-black221F1E text-base">Don't have an account? <button @click="onTapSignUp" class="text-blue1C5DAB">Sign Up</button></p>
                 <h1 class="mt-9 font-semibold text-black303030 text-2xl">WELCOME BACK !!!!!!!!!!!!!!!!!</h1>
             </div>
             <div class="hidden lg:block bg-pikachu-teehee absolute bg-img-single w-[212px] h-[190px] bottom-12 left-[12%]"></div>   
@@ -32,9 +32,20 @@ export default {
     components: {
         PokeballSemicircleBackground,
     },
+    data() {
+        return {
+            email: "",
+            password: "",
+        }
+    },
     methods: {
         onSubmitSignin() {
             alert('sign in ');
+        },
+        onTapSignUp() {
+            this.$router.push({
+                path: 'signup'
+            })
         }
     }
 }

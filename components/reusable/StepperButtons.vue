@@ -1,5 +1,5 @@
 <template>
-  <div class="w-32 h-8 flex items-stretch justify-between overflow-hidden border rounded-sm">
+  <div class="bg-white w-32 h-8 flex items-stretch justify-between overflow-hidden border rounded-sm">
     <button @click="onTapMinus" 
     :class="[
             'material-icons stepper-button',

@@ -7,6 +7,13 @@
     "_name": "_9dc480a4"
   },
   {
+    "name": "details",
+    "path": "/details",
+    "component": "/Users/admin/Documents/GitHub/pokemon_nuxt/pages/details.vue",
+    "chunkName": "pages/details",
+    "_name": "_2d8dc624"
+  },
+  {
     "name": "signin",
     "path": "/signin",
     "component": "/Users/admin/Documents/GitHub/pokemon_nuxt/pages/signin.vue",

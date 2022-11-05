@@ -26,6 +26,9 @@ module.exports = {
         'blue1C5DAB': '#1C5DAB',
         'black303030': '#303030',
         'greyA3A3A3': '#A3A3A3',
+        'blue62B2C6': '#62B2C6',
+        'greyDBDCD7': '#DBDCD7',
+        'greyC1C2BA': '#C1C2BA',
       },
       fontSize: {
         'xss': ['10px', '0px'],
@@ -43,7 +46,8 @@ module.exports = {
         'pikachu-teehee': "url('@/assets/img/pikachu_teehee.svg')",
         'charmander-finger-guns': "url('@/assets/img/charmander_finger_guns.svg')",
         'pikachu-yeehaw': "url('@/assets/img/pikachu_yeehaw.svg')",
-        'bin': "url('@/assets/img/bin.svg')"
+        'bin': "url('@/assets/img/bin.svg')",
+        'detail-blue-background': "url('@/assets/img/detail_blue_background.svg')"
       }
     }
   },

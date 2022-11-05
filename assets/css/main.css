@@ -55,9 +55,9 @@
 }
 
 .red-button {
-    @apply min-w-[150px] w-fit h-[40px] bg-primary rounded-md  text-white font-medium text-lg px-6 ;
+    @apply min-w-[150px] h-[40px] bg-primary rounded-md  text-white font-medium text-lg px-6 ;
 }
 
 .white-button {
-    @apply min-w-[150px] w-fit h-[40px] bg-white rounded-md  text-blue1C5DAB font-medium text-lg px-6 ;
+    @apply min-w-[150px] h-[40px] bg-white rounded-md  text-blue1C5DAB font-medium text-lg px-6 ;
 }
