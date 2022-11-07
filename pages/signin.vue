@@ -12,7 +12,7 @@
         <div class="relative center">
             <form class="flex flex-col w-4/5 sm:w-1/2" @submit.prevent="onSubmitSignin">
                 <label class="main-form-label" for="name">Email address *</label>
-                <input class="main-form-field" type="email" id="email" placeholder="eg.  salleh.amran@gmail.com" v-model="email" required>
+                <input class="main-form-field main-form-margin-bottom" type="email" id="email" placeholder="eg.  salleh.amran@gmail.com" v-model="email" required>
 
                 <label class="main-form-label" for="password">Password *</label>
                 <input class="main-form-field" type="password" id="password" placeholder="At least eight characters" v-model="password" required>

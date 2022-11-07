@@ -28,10 +28,6 @@
     @apply w-screen h-fit bg-screenBgBlue bg-meteor-bg;
 }
 
-.red-button {
-    @apply min-w-[150px] h-[40px] bg-primary rounded-md  text-white font-medium text-lg px-6;
-}
-
 .main-form-label {
     @apply mb-4 text-left text-black221F1E text-lg;
 }
@@ -41,14 +37,16 @@
 }
 
 .main-form-field {
-    @apply w-full h-[48px] placeholder-greyA3A3A3 border-greyA3A3A3 text-lg mb-5 px-5 rounded-sm;
+    @apply w-full h-[48px] placeholder-greyA3A3A3 border-greyA3A3A3 text-lg px-5 rounded-sm;
 }
 
 .main-form-select {
-    @apply h-[48px] px-5 text-lg mb-5;
+    @apply h-[48px] px-5 text-lg;
 }
 
-
+.main-form-margin-bottom {
+    @apply mb-5;
+}
 
 .center {
     @apply flex items-center justify-center;
@@ -56,6 +54,10 @@
 
 .red-button {
     @apply min-w-[150px] h-[40px] bg-primary rounded-md  text-white font-medium text-lg px-6 ;
+}
+
+.red-button-disabled {
+    @apply min-w-[150px] h-[40px] bg-gray-300 rounded-md  text-white font-medium text-lg px-6;
 }
 
 .white-button {

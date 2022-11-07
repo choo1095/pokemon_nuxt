@@ -12,19 +12,25 @@
         <div class="center">
             <form class="flex flex-col w-4/5 sm:w-1/2" @submit.prevent="onSubmitSignup">
                 <label class="main-form-label" for="name">Name *</label>
-                <input class="main-form-field" type="name" id="name" placeholder="eg: Muhammad Salleh bin Amran" v-model="name" required>
+                <input class="main-form-field main-form-margin-bottom" type="name" id="name" placeholder="eg: Muhammad Salleh bin Amran" v-model="name" required>
 
                 <label class="main-form-label" for="name">Email address *</label>
-                <input class="main-form-field" type="email" id="email" placeholder="eg.  salleh.amran@gmail.com" v-model="email" required>
+                <input class="main-form-field main-form-margin-bottom" type="email" id="email" placeholder="eg.  salleh.amran@gmail.com" v-model="email" required>
 
-                <label class="main-form-label" for="password">Password *</label>
-                <input class="main-form-field" type="password" id="password" placeholder="At least eight characters" v-model="password" required>
-
-                <label class="main-form-label" for="confirm-password">Confirm Password *</label>
-                <input class="main-form-field" type="password" id="confirm-password" placeholder="At least eight characters" v-model="confirmPassword" required>
+                <div class="flex flex-col main-form-margin-bottom">
+                    <label class="main-form-label" for="password">Password *</label>
+                    <input class="main-form-field" type="password" id="password" placeholder="At least eight characters" v-model="password" required>
+                    <span v-if="!isPasswordMinLength" class="text-red-500 ">Password not long enough!</span>
+                </div>
+                
+                <div class="flex flex-col main-form-margin-bottom">
+                    <label class="main-form-label" for="confirm-password">Confirm Password *</label>
+                    <input class="main-form-field" type="password" id="confirm-password" placeholder="At least eight characters" v-model="confirmPassword" required>
+                    <span v-if="!isBothPasswordsMatch" class="text-red-500 main-form-margin-bottom">Password does not match!</span>
+                </div>
 
                 <label class="main-form-label" for="gender">Gender *</label>
-                <div class="flex flex-row mb-5" required>
+                <div class="flex flex-row main-form-margin-bottom" required>
                     <input type="radio" id="male" name="gender" value="male" v-model="gender">
                     <label class="main-form-radio-label" for="gender">Male</label>
                     <input type="radio" id="female" name="gender" value="female" v-model="gender">
@@ -32,14 +38,14 @@
                 </div>
                 
                 <label class="main-form-label" for="nationality">Nationality *</label>
-                <select class="main-form-select" id="nationality" v-model="nationality" required>
+                <select class="main-form-select main-form-margin-bottom" id="nationality" v-model="nationality" required>
                     <option value="malaysian">Malaysian</option>
                     <option value="nonmalaysian">Non-malaysian</option>
                     <option value="alien">Alien</option>
                 </select>
 
                 <label class="main-form-label" for="hobby">List of Hobbies</label>
-                <div class="grid grid-cols-1 sm:grid-cols-2">
+                <div class="grid grid-cols-1 sm:grid-cols-2 main-form-margin-bottom">
                     <div>
                         <input type="checkbox" v-model="hobbies" id="eating" name="eating" value="eating">
                         <label for="eating">Eating</label><br>
@@ -62,7 +68,9 @@
                     </div>
                 </div>
                 
-                <input type="submit" class="red-button self-center mt-20" value="Sign Up">
+                <input type="submit" 
+                    :disabled="!isSignUpEnabled" 
+                    :class="['self-center mt-20', isSignUpEnabled ? 'red-button' : 'red-button-disabled']" value="Sign Up">
             </form>
         </div>
         
@@ -97,8 +105,33 @@ export default {
             })
         },
         onSubmitSignup() {
-            console.log(`${this.name} || ${this.email} || ${this.password} || ${this.confirmPassword} || ${this.gender} || ${this.nationality} || ${this.hobbies} `)
+            this.$store.dispatch('user/login', {
+                name: this.name,
+                email: this.email,
+                gender: this.gender,
+                nationality: this.nationality,
+            })
         }
+    },
+    computed: {
+        isSignUpEnabled() {
+            let conditions = [
+                this.name != "",
+                this.email != "",
+                this.isPasswordMinLength,
+                this.isBothPasswordsMatch,
+                this.gender != "",
+                this.nationality != "",
+            ]
+
+            return conditions.every(element => element === true);
+        },
+        isPasswordMinLength() {
+            return this.password.length >= 8;
+        },
+        isBothPasswordsMatch() {
+            return this.password == this.confirmPassword;
+        },
     }
 }
 </script>
