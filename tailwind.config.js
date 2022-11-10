@@ -47,7 +47,9 @@ module.exports = {
         'charmander-finger-guns': "url('@/assets/img/charmander_finger_guns.svg')",
         'pikachu-yeehaw': "url('@/assets/img/pikachu_yeehaw.svg')",
         'bin': "url('@/assets/img/bin.svg')",
-        'detail-blue-background': "url('@/assets/img/detail_blue_background.svg')"
+        'detail-blue-background': "url('@/assets/img/detail_blue_background.svg')",
+        'circle-account': "url('@/assets/img/circle_account.svg')",
+        'weird-pikachu': "url('@/assets/img/weird_pikachu.svg')"
       }
     }
   },

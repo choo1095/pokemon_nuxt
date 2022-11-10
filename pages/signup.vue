@@ -110,7 +110,15 @@ export default {
                 email: this.email,
                 gender: this.gender,
                 nationality: this.nationality,
+                hobbies: this.hobbies,
             })
+
+            this.$swal('Successfully signed up!')
+                .then((_) => {
+                    this.$router.push({
+                        path: '/'
+                    })
+                });
         }
     },
     computed: {

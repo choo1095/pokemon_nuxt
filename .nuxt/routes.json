@@ -14,6 +14,13 @@
     "_name": "_2d8dc624"
   },
   {
+    "name": "profile",
+    "path": "/profile",
+    "component": "/Users/admin/Documents/GitHub/pokemon_nuxt/pages/profile.vue",
+    "chunkName": "pages/profile",
+    "_name": "_9d695bea"
+  },
+  {
     "name": "signin",
     "path": "/signin",
     "component": "/Users/admin/Documents/GitHub/pokemon_nuxt/pages/signin.vue",

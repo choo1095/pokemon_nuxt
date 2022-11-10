@@ -7,9 +7,8 @@ export const state = () => ({
 })
 
 export const getters = {
-    getCurrentUser(state) {
-        return state.currentUser;
-    }
+    getCurrentUser: (state) => state.currentUser,
+    getIsAuthenticated: (state) => state.currentUser !== null,
 }
 
 export const mutations = {
@@ -19,20 +18,23 @@ export const mutations = {
             gender: payload.gender,
             nationality: payload.nationality,
             hobbies: payload.hobbies,
+            email: payload.email,
         }
+        localStorage.setItem('user', JSON.stringify(payload));
+        console.log(`MUTATION MESSAGE: User set - ${JSON.stringify(payload)}`);
     },
     removeCurrentUser(state) {
         state.currentUser = null;
+        console.log(`MUTATION MESSAGE: User remove`);
+        localStorage.removeItem('user')
     }
 }
 
 export const actions = {
-    async login({ commit }, payload) {
+    login({ commit }, payload) {
         commit('setCurrentUser', payload);
-        localStorage.setItem('user', JSON.stringify(payload));
     },
-    async logout({ commit }) {
+    logout({ commit }) {
         commit('removeCurrentUser');
-        localStorage.removeItem('user')
     }
 }

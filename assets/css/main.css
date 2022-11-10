@@ -10,6 +10,10 @@
     }
 }
 
+html {
+    @apply overflow-x-hidden;   
+}
+
 .feather {
     width: 24px;
     height: 24px;
@@ -40,8 +44,16 @@
     @apply w-full h-[48px] placeholder-greyA3A3A3 border-greyA3A3A3 text-lg px-5 rounded-sm;
 }
 
+.main-form-field-disabled {
+    @apply w-full h-[48px] bg-white placeholder-greyA3A3A3 text-greyA3A3A3 border-greyA3A3A3 text-lg px-5 rounded-sm;
+}
+
 .main-form-select {
     @apply h-[48px] px-5 text-lg;
+}
+
+.main-form-select-disabled {
+    @apply h-[48px] px-5 text-lg bg-white opacity-100 text-greyA3A3A3;
 }
 
 .main-form-margin-bottom {

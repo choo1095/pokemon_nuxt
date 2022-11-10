@@ -1,7 +1,7 @@
 <template>
   <div class="blue-meteor-bg pb-20">
-    <Splash v-if="isShowSplashScreen" />
-    <div v-else>
+    <!-- <Splash v-if="isShowSplashScreen" /> -->
+    <!-- <div v-else> -->
       <div class="relative">
         <PokeballSemicircleBackground heightClass="h-[42rem]" />
         <PokemonCarousel 
@@ -10,7 +10,7 @@
       <h1 class="text-blue362056 text-center text-2xl font-medium mt-10 mb-10">SHOP ALL</h1>
       <PokemonPaginatedGrid 
         :pokemonList="[]"/>
-    </div>
+    <!-- </div> -->
   </div>
 </template> 
 
@@ -36,18 +36,23 @@ export default Vue.extend({
     PokemonCard,
     PokemonPaginatedGrid,
   },
+  methods: {
+    initUserData() {
+      if (process.browser) {
+        let user = JSON.parse(localStorage.getItem('user'))
+        if (user !== null) {
+          this.$store.dispatch('user/login', user)
+        }
+      }
+    }
+  },
   async created() {
+    this.initUserData()
     this.isShowSplashScreen = true;
   },
   async mounted() {
     setTimeout(() => this.isShowSplashScreen = false, 3000);
-
-    if (!process.client) return;
-    const user = localStorage.getItem("user");
-    if(user) {
-      this.$store.commit('myMutation',user)
-    }
-  }
+  },
 })
 </script>
 
