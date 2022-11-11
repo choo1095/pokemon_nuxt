@@ -25,8 +25,8 @@ export const mutations = {
     },
     removeCurrentUser(state) {
         state.currentUser = null;
-        console.log(`MUTATION MESSAGE: User remove`);
         localStorage.removeItem('user')
+        console.log(`MUTATION MESSAGE: User remove`);
     }
 }
 
