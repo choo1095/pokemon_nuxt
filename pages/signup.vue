@@ -11,7 +11,56 @@
         </div>
         <div class="center">
             <form class="flex flex-col w-4/5 sm:w-1/2" @submit.prevent="onSubmitSignup">
-                <label class="main-form-label" for="name">Name *</label>
+                <TextFormField 
+                    labelTitle="Name *" 
+                    type="name" 
+                    placeholder="eg: Muhammad Salleh bin Amran" 
+                    v-model="name" 
+                    :required="true" />
+
+                <TextFormField 
+                    labelTitle="Email address *" 
+                    type="email" 
+                    placeholder="eg. salleh.amran@gmail.com" 
+                    v-model="email" 
+                    :required="true" />
+
+                <TextFormField 
+                    labelTitle="Password *" 
+                    type="password" 
+                    placeholder="At least eight characters" 
+                    v-model="password" 
+                    :required="true"
+                    errorMessage="Password not long enough!"
+                    :showErrorMessage="!isPasswordMinLength" />
+
+                <TextFormField 
+                    labelTitle="Confirm Password *" 
+                    type="password" 
+                    placeholder="At least eight characters" 
+                    v-model="confirmPassword" 
+                    :required="true" 
+                    errorMessage="Password does not match!"
+                    :showErrorMessage="!isBothPasswordsMatch"/>
+
+                <RadioFormField 
+                    labelTitle="Gender *" 
+                    v-model="gender" 
+                    :options="getGenderOptions"
+                    :required="true" 
+                    name="gender" />
+
+                <DropDownFormField
+                    labelTitle="Nationality *"
+                    v-model="nationality"
+                    :options="getNationalityOptions"
+                    :required="true" />
+
+                <CheckboxFormField 
+                    labelTitle="List of Hobbies"
+                    v-model="hobbies"
+                    :options="getHobbyOptions" />
+                <!-- <label class="main-form-label" for="name">Name *</label>
                 <input class="main-form-field main-form-margin-bottom" type="name" id="name" placeholder="eg: Muhammad Salleh bin Amran" v-model="name" required>
 
                 <label class="main-form-label" for="name">Email address *</label>
@@ -27,24 +76,24 @@
                     <label class="main-form-label" for="confirm-password">Confirm Password *</label>
                     <input class="main-form-field" type="password" id="confirm-password" placeholder="At least eight characters" v-model="confirmPassword" required>
                     <span v-if="!isBothPasswordsMatch" class="text-red-500 main-form-margin-bottom">Password does not match!</span>
-                </div>
+                </div> -->
 
-                <label class="main-form-label" for="gender">Gender *</label>
+                <!-- <label class="main-form-label" for="gender">Gender *</label>
                 <div class="flex flex-row main-form-margin-bottom" required>
                     <input type="radio" id="male" name="gender" value="male" v-model="gender">
                     <label class="main-form-radio-label" for="gender">Male</label>
                     <input type="radio" id="female" name="gender" value="female" v-model="gender">
                     <label class="main-form-radio-label" for="gender">Female</label>
-                </div>
+                </div> -->
                 
-                <label class="main-form-label" for="nationality">Nationality *</label>
+                <!-- <label class="main-form-label" for="nationality">Nationality *</label>
                 <select class="main-form-select main-form-margin-bottom" id="nationality" v-model="nationality" required>
                     <option value="malaysian">Malaysian</option>
                     <option value="nonmalaysian">Non-malaysian</option>
                     <option value="alien">Alien</option>
-                </select>
+                </select> -->
 
-                <label class="main-form-label" for="hobby">List of Hobbies</label>
+                <!-- <label class="main-form-label" for="hobby">List of Hobbies</label>
                 <div class="grid grid-cols-1 sm:grid-cols-2 main-form-margin-bottom">
                     <div>
                         <input type="checkbox" v-model="hobbies" id="eating" name="eating" value="eating">
@@ -67,7 +116,7 @@
                         <label for="no-hobby">I don't have a hobby</label><br>
                     </div>
                 </div>
-                
+                 -->
                 <input type="submit" 
                     :disabled="!isSignUpEnabled" 
                     :class="['self-center mt-20', isSignUpEnabled ? 'red-button' : 'red-button-disabled']" value="Sign Up">
@@ -80,12 +129,21 @@
 <script>
 import PokeballSemicircleBackground from '@/components/reusable/PokeballSemicircleBackground.vue'
 import RedButton from '@/components/reusable/RedButton.vue'
+import TextFormField from '@/components/reusable/TextFormField.vue'
+import RadioFormField from '@/components/reusable/RadioFormField.vue'
+import DropDownFormField from '@/components/reusable/DropDownFormField.vue'
+import CheckboxFormField from '@/components/reusable/CheckboxFormField.vue'
+import { mapGetters } from 'vuex'
 
 export default {
     name: 'SignUp',
     components: {
         PokeballSemicircleBackground,
         RedButton,
+        TextFormField,
+        RadioFormField,
+        DropDownFormField,
+        CheckboxFormField
     },
     data() {
         return {
@@ -140,6 +198,11 @@ export default {
         isBothPasswordsMatch() {
             return this.password == this.confirmPassword;
         },
+        ...mapGetters({
+            getGenderOptions: 'constants/getGenderOptions',
+            getNationalityOptions: 'constants/getNationalityOptions',
+            getHobbyOptions: 'constants/getHobbyOptions'
+        }),
     }
 }
 </script>

@@ -7,10 +7,12 @@
             <div v-for="option in options" :key="option.id"> 
                 <input 
                     type="radio" 
+                    :name="name"
                     :value="value"
                     :disabled="disabled"
                     :checked="value === option.id"
-                    @change="$emit('input', option.id)">
+                    @change="$emit('input', option.id)"
+                    :required="required">
                 <label class="main-form-radio-label">{{option.title}}</label>
             </div>
         </div>
@@ -25,6 +27,10 @@ export default {
             type: Boolean, 
             default: false,
         },
+        required: {
+            type: Boolean,
+            default: false,
+        },
         value: {
             type: String,
             required: false,
@@ -37,6 +43,10 @@ export default {
             type: Array,
             required: true,
         },
+        name: {
+            type: String,
+            required: true,
+        }
     },
 }
 </script>
