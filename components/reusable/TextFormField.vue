@@ -2,15 +2,13 @@
     <div class="flex flex-col">
         <label 
             class="main-form-label" 
-            :for="id"
             :v-if="labelTitle !== null">{{ labelTitle }}</label>
         <input 
             :class="[ disabled ? 'main-form-field-disabled' : 'main-form-field', 'main-form-margin-bottom']" 
             :type="type" 
-            :id="id" 
             :placeholder="placeholder" 
-            v-bind:value="vModel"
-            v-on:input="$emit('input', $event.target.value)"
+            :value="value"
+            @input="$emit('input', $event.target.value)"
             :disabled="disabled">
     </div>
 </template>
@@ -27,15 +25,11 @@ export default {
             type: String,
             default: "text",
         },
-        id: {
-            type: String,
-            required: true,
-        },
         placeholder: {
             type: String,
             required: false,
         },
-        vModel: {
+        value: {
             type: String,
             required: true,
         },

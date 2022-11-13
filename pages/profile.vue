@@ -9,9 +9,9 @@
         </div>
         <div class="center">
             <form class="flex flex-col w-4/5 sm:w-1/2" @submit.prevent>
-                <TextFormField :disabled="!isEditingProfile" labelTitle="Name" :type="name" :id="name" placeholder="eg: Muhammad Salleh bin Amran" :vModel="name" />
-                <TextFormField :disabled="!isEditingProfile" labelTitle="Email address" :type="email" :id="email" placeholder="eg.  salleh.amran@gmail.com" :vModel="email" />
-                <RadioFormField :disabled="!isEditingProfile" labelTitle="Gender" id="gender" :vModel="gender" :options="genderOptions"/>
+                <TextFormField :disabled="!isEditingProfile" labelTitle="Name" :type="name" placeholder="eg: Muhammad Salleh bin Amran" v-model="selectedName" />
+                <TextFormField :disabled="!isEditingProfile" labelTitle="Email address" :type="email" placeholder="eg. salleh.amran@gmail.com" v-model="selectedEmail" />
+                <RadioFormField :disabled="!isEditingProfile" labelTitle="Gender" v-model="selectedGender" :options="getGenderOptions" />
             <!-- <form class="flex flex-col w-4/5 sm:w-1/2" @submit.prevent>
                 <label class="main-form-label" for="name">Name</label>
                 <input class="main-form-field-disabled main-form-margin-bottom" type="name" id="name" placeholder="eg: Muhammad Salleh bin Amran" v-model="name" :disabled="!isEditingProfile">
@@ -79,16 +79,11 @@ export default {
     data() {
         return {
             isEditingProfile: false,
-            genderOptions: [
-                {
-                    id: "male",
-                    title: "Male",
-                },
-                {
-                    id: "female",
-                    title: "Female",
-                },
-            ],
+            selectedName: "",
+            selectedEmail: "",
+            selectedGender: "",
+            selectedNationality: "",
+            selectedHobbies: [],
         }  
     },
     components: {
@@ -110,28 +105,28 @@ export default {
         onTapEditProfile() {
             window.scrollTo({ top: 0, behavior: "smooth" });
             this.isEditingProfile = !this.isEditingProfile;
+        },
+        onUpdateGender(value) {
+            this.selectedGender = value
+        },
+        prefillFields() {
+            let user = this.getCurrentUser;
+
+            this.selectedName = user?.name ?? "";
+            this.selectedEmail = user?.email ?? "";
+            this.selectedGender = user?.gender ?? "";
+            this.selectedNationality = user?.nationality ?? "";
+            this.selectedHobbies = user?.hobbies ?? [];
         }
+    },
+    created() {
+        this.prefillFields();
     },
     computed: {
         ...mapGetters({
-            getCurrentUser: 'user/getCurrentUser'
+            getCurrentUser: 'user/getCurrentUser',
+            getGenderOptions: 'constants/getGenderOptions'
         }),
-        name() {
-            return this.getCurrentUser?.name;
-        },
-        email() {
-            return this.getCurrentUser?.email;
-        },
-        gender() {
-            return this.getCurrentUser?.gender;
-        },
-        nationality() {
-            return this.getCurrentUser?.nationality;
-        },
-        hobbies() {
-            return this.getCurrentUser?.hobbies;
-        }
-
     }
 }
 </script>
