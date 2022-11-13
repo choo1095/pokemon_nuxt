@@ -7,7 +7,8 @@
             :class="[disabled ? 'main-form-select-disabled' : 'main-form-select']"
             :v-model="value"
             :required="required"
-            @change="(e) => $emit('input', e.target.value)" >
+            @change="(e) => $emit('input', e.target.value)" 
+            :disabled="disabled">
             <option 
                 v-for="option in options"
                 :key="option.id"

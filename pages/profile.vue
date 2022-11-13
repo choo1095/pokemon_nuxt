@@ -9,9 +9,43 @@
         </div>
         <div class="center">
             <form class="flex flex-col w-4/5 sm:w-1/2" @submit.prevent>
-                <TextFormField :disabled="!isEditingProfile" labelTitle="Name" :type="name" placeholder="eg: Muhammad Salleh bin Amran" v-model="selectedName" />
-                <TextFormField :disabled="!isEditingProfile" labelTitle="Email address" :type="email" placeholder="eg. salleh.amran@gmail.com" v-model="selectedEmail" />
-                <RadioFormField :disabled="!isEditingProfile" labelTitle="Gender" v-model="selectedGender" :options="getGenderOptions" />
+                <TextFormField 
+                    :disabled="!isEditingProfile" 
+                    labelTitle="Name" 
+                    :type="name" 
+                    placeholder="eg: Muhammad Salleh bin Amran" 
+                    v-model="selectedName"
+                    :required="true" />
+
+                <TextFormField 
+                    :disabled="!isEditingProfile" 
+                    labelTitle="Email address" 
+                    :type="email" 
+                    placeholder="eg. salleh.amran@gmail.com" 
+                    v-model="selectedEmail"
+                    :required="true" />
+
+                <RadioFormField 
+                    :disabled="!isEditingProfile" 
+                    labelTitle="Gender" 
+                    v-model="selectedGender" 
+                    :options="getGenderOptions"
+                    :required="true" />
+
+                <DropDownFormField
+                    labelTitle="Nationality"
+                    :disabled="!isEditingProfile"
+                    v-model="selectedNationality"
+                    :options="getNationalityOptions"
+                    :required="true" />
+
+                <CheckboxFormField 
+                    :disabled="!isEditingProfile"
+                    labelTitle="List of Hobbies"
+                    v-model="selectedHobbies"
+                    :options="getHobbyOptions" />
+
+                
             <!-- <form class="flex flex-col w-4/5 sm:w-1/2" @submit.prevent>
                 <label class="main-form-label" for="name">Name</label>
                 <input class="main-form-field-disabled main-form-margin-bottom" type="name" id="name" placeholder="eg: Muhammad Salleh bin Amran" v-model="name" :disabled="!isEditingProfile">
@@ -72,6 +106,8 @@ import PokeballSemicircleBackground from '@/components/reusable/PokeballSemicirc
 import RedButton from '@/components/reusable/RedButton.vue'
 import TextFormField from '@/components/reusable/TextFormField.vue'
 import RadioFormField from '@/components/reusable/RadioFormField.vue'
+import DropDownFormField from '@/components/reusable/DropDownFormField.vue'
+import CheckboxFormField from '@/components/reusable/CheckboxFormField.vue'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -90,7 +126,9 @@ export default {
         PokeballSemicircleBackground,
         RedButton,
         TextFormField,
-        RadioFormField
+        RadioFormField,
+        DropDownFormField,
+        CheckboxFormField,
     },
     methods: {
         onTapLogOut() {
@@ -125,7 +163,9 @@ export default {
     computed: {
         ...mapGetters({
             getCurrentUser: 'user/getCurrentUser',
-            getGenderOptions: 'constants/getGenderOptions'
+            getNationalityOptions: 'constants/getNationalityOptions',
+            getGenderOptions: 'constants/getGenderOptions',
+            getHobbyOptions: 'constants/getHobbyOptions',
         }),
     }
 }
