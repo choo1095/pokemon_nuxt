@@ -13,7 +13,8 @@
                 v-for="option in optionsWithEmptyDefault"
                 :key="option.id"
                 :value="option.id"
-                :selected="option.id === value" >{{option.title}}</option>
+                :selected="option.id === value"
+                :hidden="option.id === ''" >{{option.title}}</option>
         </select>
     </div>
 </template>
