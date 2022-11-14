@@ -60,63 +60,7 @@
                     labelTitle="List of Hobbies"
                     v-model="hobbies"
                     :options="getHobbyOptions" />
-                <!-- <label class="main-form-label" for="name">Name *</label>
-                <input class="main-form-field main-form-margin-bottom" type="name" id="name" placeholder="eg: Muhammad Salleh bin Amran" v-model="name" required>
 
-                <label class="main-form-label" for="name">Email address *</label>
-                <input class="main-form-field main-form-margin-bottom" type="email" id="email" placeholder="eg.  salleh.amran@gmail.com" v-model="email" required>
-
-                <div class="flex flex-col main-form-margin-bottom">
-                    <label class="main-form-label" for="password">Password *</label>
-                    <input class="main-form-field" type="password" id="password" placeholder="At least eight characters" v-model="password" required>
-                    <span v-if="!isPasswordMinLength" class="text-red-500 ">Password not long enough!</span>
-                </div>
-                
-                <div class="flex flex-col main-form-margin-bottom">
-                    <label class="main-form-label" for="confirm-password">Confirm Password *</label>
-                    <input class="main-form-field" type="password" id="confirm-password" placeholder="At least eight characters" v-model="confirmPassword" required>
-                    <span v-if="!isBothPasswordsMatch" class="text-red-500 main-form-margin-bottom">Password does not match!</span>
-                </div> -->
-
-                <!-- <label class="main-form-label" for="gender">Gender *</label>
-                <div class="flex flex-row main-form-margin-bottom" required>
-                    <input type="radio" id="male" name="gender" value="male" v-model="gender">
-                    <label class="main-form-radio-label" for="gender">Male</label>
-                    <input type="radio" id="female" name="gender" value="female" v-model="gender">
-                    <label class="main-form-radio-label" for="gender">Female</label>
-                </div> -->
-                
-                <!-- <label class="main-form-label" for="nationality">Nationality *</label>
-                <select class="main-form-select main-form-margin-bottom" id="nationality" v-model="nationality" required>
-                    <option value="malaysian">Malaysian</option>
-                    <option value="nonmalaysian">Non-malaysian</option>
-                    <option value="alien">Alien</option>
-                </select> -->
-
-                <!-- <label class="main-form-label" for="hobby">List of Hobbies</label>
-                <div class="grid grid-cols-1 sm:grid-cols-2 main-form-margin-bottom">
-                    <div>
-                        <input type="checkbox" v-model="hobbies" id="eating" name="eating" value="eating">
-                        <label for="eating">Eating</label><br>
-                        <input type="checkbox" v-model="hobbies" id="sleeping" name="sleeping" value="sleeping">
-                        <label for="sleeping">Sleeping</label><br>
-                        <input type="checkbox" v-model="hobbies" id="crying" name="crying" value="crying">
-                        <label for="crying">Crying</label><br>
-                        <input type="checkbox" v-model="hobbies" id="playing-games" name="playing-games" value="playing-games">
-                        <label for="playing-games">Playing games</label><br>
-                    </div>
-                    <div>
-                        <input type="checkbox" v-model="hobbies" id="biking" name="biking" value="biking">
-                        <label for="biking">Biking</label><br>
-                        <input type="checkbox" v-model="hobbies" id="watching-tv" name="watching-tv" value="watching-tv">
-                        <label for="watching-tv">Watching TV</label><br>
-                        <input type="checkbox" v-model="hobbies" id="listening-to-music" name="listening-to-music" value="listening-to-music">
-                        <label for="listening-to-music">Listening to music</label><br>
-                        <input type="checkbox" v-model="hobbies" id="no-hobby" name="no-hobby" value="no-hobby">
-                        <label for="no-hobby">I don't have a hobby</label><br>
-                    </div>
-                </div>
-                 -->
                 <input type="submit" 
                     :disabled="!isSignUpEnabled" 
                     :class="['self-center mt-20', isSignUpEnabled ? 'red-button' : 'red-button-disabled']" value="Sign Up">

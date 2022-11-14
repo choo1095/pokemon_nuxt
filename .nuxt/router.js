@@ -4,12 +4,12 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _5b750e65 = () => interopDefault(import('..\\pages\\cart.vue' /* webpackChunkName: "pages/cart" */))
-const _18c22fe6 = () => interopDefault(import('..\\pages\\details.vue' /* webpackChunkName: "pages/details" */))
-const _775c73f4 = () => interopDefault(import('..\\pages\\profile.vue' /* webpackChunkName: "pages/profile" */))
-const _2d9f0ab2 = () => interopDefault(import('..\\pages\\signin.vue' /* webpackChunkName: "pages/signin" */))
-const _04725dc6 = () => interopDefault(import('..\\pages\\signup.vue' /* webpackChunkName: "pages/signup" */))
-const _4e0e7146 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
+const _9dc480a4 = () => interopDefault(import('../pages/cart.vue' /* webpackChunkName: "pages/cart" */))
+const _2d8dc624 = () => interopDefault(import('../pages/details.vue' /* webpackChunkName: "pages/details" */))
+const _9d695bea = () => interopDefault(import('../pages/profile.vue' /* webpackChunkName: "pages/profile" */))
+const _7771fdb0 = () => interopDefault(import('../pages/signin.vue' /* webpackChunkName: "pages/signin" */))
+const _e7ef57b4 = () => interopDefault(import('../pages/signup.vue' /* webpackChunkName: "pages/signup" */))
+const _38663f34 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
 
@@ -24,27 +24,27 @@ export const routerOptions = {
 
   routes: [{
     path: "/cart",
-    component: _5b750e65,
+    component: _9dc480a4,
     name: "cart"
   }, {
     path: "/details",
-    component: _18c22fe6,
+    component: _2d8dc624,
     name: "details"
   }, {
     path: "/profile",
-    component: _775c73f4,
+    component: _9d695bea,
     name: "profile"
   }, {
     path: "/signin",
-    component: _2d9f0ab2,
+    component: _7771fdb0,
     name: "signin"
   }, {
     path: "/signup",
-    component: _04725dc6,
+    component: _e7ef57b4,
     name: "signup"
   }, {
     path: "/",
-    component: _4e0e7146,
+    component: _38663f34,
     name: "index"
   }],
 

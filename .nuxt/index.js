@@ -13,10 +13,10 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_vuesweetalert2_755e0a00 from 'nuxt_plugin_vuesweetalert2_755e0a00' // Source: .\\vue-sweetalert2.js (mode: 'client')
-import nuxt_plugin_axios_5038a7a9 from 'nuxt_plugin_axios_5038a7a9' // Source: .\\axios.js (mode: 'all')
-import nuxt_plugin_libplugin286e5f40_23c20c2b from 'nuxt_plugin_libplugin286e5f40_23c20c2b' // Source: .\\lib.plugin.286e5f40.js (mode: 'all')
-import nuxt_plugin_vueprogresspath_0eff6422 from 'nuxt_plugin_vueprogresspath_0eff6422' // Source: ..\\plugins\\vue-progress-path.js (mode: 'all')
+import nuxt_plugin_vuesweetalert2_93ad59fe from 'nuxt_plugin_vuesweetalert2_93ad59fe' // Source: ./vue-sweetalert2.js (mode: 'client')
+import nuxt_plugin_axios_3e0be42c from 'nuxt_plugin_axios_3e0be42c' // Source: ./axios.js (mode: 'all')
+import nuxt_plugin_libpluginb257e59c_d3aed57c from 'nuxt_plugin_libpluginb257e59c_d3aed57c' // Source: ./lib.plugin.b257e59c.js (mode: 'all')
+import nuxt_plugin_vueprogresspath_0eff6422 from 'nuxt_plugin_vueprogresspath_0eff6422' // Source: ../plugins/vue-progress-path.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -213,16 +213,16 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (process.client && typeof nuxt_plugin_vuesweetalert2_755e0a00 === 'function') {
-    await nuxt_plugin_vuesweetalert2_755e0a00(app.context, inject)
+  if (process.client && typeof nuxt_plugin_vuesweetalert2_93ad59fe === 'function') {
+    await nuxt_plugin_vuesweetalert2_93ad59fe(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_5038a7a9 === 'function') {
-    await nuxt_plugin_axios_5038a7a9(app.context, inject)
+  if (typeof nuxt_plugin_axios_3e0be42c === 'function') {
+    await nuxt_plugin_axios_3e0be42c(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_libplugin286e5f40_23c20c2b === 'function') {
-    await nuxt_plugin_libplugin286e5f40_23c20c2b(app.context, inject)
+  if (typeof nuxt_plugin_libpluginb257e59c_d3aed57c === 'function') {
+    await nuxt_plugin_libpluginb257e59c_d3aed57c(app.context, inject)
   }
 
   if (typeof nuxt_plugin_vueprogresspath_0eff6422 === 'function') {

@@ -10,9 +10,10 @@
             @change="(e) => $emit('input', e.target.value)" 
             :disabled="disabled">
             <option 
-                v-for="option in options"
+                v-for="option in optionsWithEmptyDefault"
                 :key="option.id"
-                :value="option.id" >{{option.title}}</option>
+                :value="option.id"
+                :selected="option.id === value" >{{option.title}}</option>
         </select>
     </div>
 </template>
@@ -42,5 +43,12 @@ export default {
             required: true,
         },
     },
+    computed: {
+        optionsWithEmptyDefault() {
+            let newOptions = JSON.parse(JSON.stringify(this.options));
+            newOptions.unshift({ id: "", title: "" })
+            return newOptions;
+        }
+    }
 }
 </script>

@@ -9,6 +9,7 @@
                 :key="option.id">
                 <input 
                     type="checkbox" 
+                    :checked="value.some(item => item === option.id)"
                     :value="option.id"
                     :disabled="disabled"
                     @change="onUpdateField" >
@@ -42,7 +43,7 @@ export default {
     methods: {
         onUpdateField(e) {
             let itemClicked = e.target.value;
-            var newValue = this.value;
+            let newValue = JSON.parse(JSON.stringify(this.value));
             if(!newValue.includes(itemClicked)) {
                 newValue.push(itemClicked);
             } else {

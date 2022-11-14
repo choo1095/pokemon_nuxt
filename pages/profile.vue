@@ -12,7 +12,7 @@
                 <TextFormField 
                     :disabled="!isEditingProfile" 
                     labelTitle="Name" 
-                    :type="name" 
+                    type="name" 
                     placeholder="eg: Muhammad Salleh bin Amran" 
                     v-model="selectedName"
                     :required="true" />
@@ -20,7 +20,7 @@
                 <TextFormField 
                     :disabled="!isEditingProfile" 
                     labelTitle="Email address" 
-                    :type="email" 
+                    type="email" 
                     placeholder="eg. salleh.amran@gmail.com" 
                     v-model="selectedEmail"
                     :required="true" />
@@ -30,7 +30,8 @@
                     labelTitle="Gender" 
                     v-model="selectedGender" 
                     :options="getGenderOptions"
-                    :required="true" />
+                    :required="true"
+                    name="gender" />
 
                 <DropDownFormField
                     labelTitle="Nationality"
@@ -44,53 +45,6 @@
                     labelTitle="List of Hobbies"
                     v-model="selectedHobbies"
                     :options="getHobbyOptions" />
-
-                
-            <!-- <form class="flex flex-col w-4/5 sm:w-1/2" @submit.prevent>
-                <label class="main-form-label" for="name">Name</label>
-                <input class="main-form-field-disabled main-form-margin-bottom" type="name" id="name" placeholder="eg: Muhammad Salleh bin Amran" v-model="name" :disabled="!isEditingProfile">
-
-                <label class="main-form-label" for="name">Email address</label>
-                <input class="main-form-field-disabled main-form-margin-bottom" type="email" id="email" placeholder="eg.  salleh.amran@gmail.com" v-model="email" disabled>
-
-                <label class="main-form-label" for="gender">Gender</label>
-                <div class="flex flex-row main-form-margin-bottom">
-                    <input type="radio" id="male" name="gender" value="male" v-model="gender" disabled>
-                    <label class="main-form-radio-label" for="gender">Male</label>
-                    <input type="radio" id="female" name="gender" value="female" v-model="gender" disabled>
-                    <label class="main-form-radio-label" for="gender">Female</label>
-                </div>
-                
-                <label class="main-form-label" for="nationality">Nationality</label>
-                <select class="main-form-select-disabled main-form-margin-bottom" id="nationality" v-model="nationality" disabled>
-                    <option value="malaysian">Malaysian</option>
-                    <option value="nonmalaysian">Non-malaysian</option>
-                    <option value="alien">Alien</option>
-                </select>
-
-                <label class="main-form-label" for="hobby">List of Hobbies</label>
-                <div class="grid grid-cols-1 sm:grid-cols-2 main-form-margin-bottom">
-                    <div>
-                        <input type="checkbox" v-model="hobbies" id="eating" name="eating" value="eating" disabled>
-                        <label for="eating">Eating</label><br>
-                        <input type="checkbox" v-model="hobbies" id="sleeping" name="sleeping" value="sleeping" disabled>
-                        <label for="sleeping">Sleeping</label><br>
-                        <input type="checkbox" v-model="hobbies" id="crying" name="crying" value="crying" disabled>
-                        <label for="crying">Crying</label><br>
-                        <input type="checkbox" v-model="hobbies" id="playing-games" name="playing-games" value="playing-games" disabled>
-                        <label for="playing-games">Playing games</label><br>
-                    </div>
-                    <div>
-                        <input type="checkbox" v-model="hobbies" id="biking" name="biking" value="biking" disabled>
-                        <label for="biking">Biking</label><br>
-                        <input type="checkbox" v-model="hobbies" id="watching-tv" name="watching-tv" value="watching-tv" disabled>
-                        <label for="watching-tv">Watching TV</label><br>
-                        <input type="checkbox" v-model="hobbies" id="listening-to-music" name="listening-to-music" value="listening-to-music" disabled>
-                        <label for="listening-to-music">Listening to music</label><br>
-                        <input type="checkbox" v-model="hobbies" id="no-hobby" name="no-hobby" value="no-hobby" disabled>
-                        <label for="no-hobby">I don't have a hobby</label><br>
-                    </div>
-                </div> --> 
                 
                 <button @click="onTapEditProfile" class="red-button self-center mt-20">Edit Profile</button>
 
