@@ -46,9 +46,10 @@
                     v-model="selectedHobbies"
                     :options="getHobbyOptions" />
                 
-                <button @click="onTapEditProfile" class="red-button self-center mt-20">Edit Profile</button>
+                <button v-if="!isEditingProfile" @click="onTapEditProfile" class="red-button self-center mt-20">Edit Profile</button>
+                <button v-else @click="onTapSaveProfile" class="red-button self-center mt-20">Save Profile</button>
 
-                <button @click="onTapLogOut" class="white-button self-center mt-5">Log Out</button>
+                <button v-if="!isEditingProfile" @click="onTapLogOut" class="white-button self-center mt-5">Log Out</button>
             </form> 
         </div>
         
@@ -92,6 +93,20 @@ export default {
                     this.$router.push({
                         path: '/'
                     })
+                });
+        },
+        onTapSaveProfile() {
+            this.$store.dispatch('user/login', {
+                name: this.selectedName,
+                email: this.selectedEmail,
+                gender: this.selectedGender,
+                nationality: this.selectedNationality,
+                hobbies: this.selectedHobbies,
+            });
+            this.$swal('Your profile information has been saved!')
+                .then((_) => {
+                    this.isEditingProfile = !this.isEditingProfile;
+                    window.scrollTo({ top: 0, behavior: "smooth" });
                 });
         },
         onTapEditProfile() {

@@ -8,12 +8,13 @@
                 v-for="option in options"
                 :key="option.id">
                 <input 
+                    :id="option.id"
                     type="checkbox" 
                     :checked="value.some(item => item === option.id)"
                     :value="option.id"
                     :disabled="disabled"
                     @change="onUpdateField" >
-                <label>{{ option.title }}</label>
+                <label :for="option.id">{{ option.title }}</label>
             </div>
         </div>
     </div>

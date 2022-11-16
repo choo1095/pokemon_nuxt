@@ -7,13 +7,15 @@
             <div v-for="option in options" :key="option.id"> 
                 <input 
                     type="radio" 
-                    :name="name"
+                    :id="option.id"
                     :value="value"
                     :disabled="disabled"
                     :checked="value === option.id"
                     @change="$emit('input', option.id)"
                     :required="required">
-                <label class="main-form-radio-label">{{option.title}}</label>
+                <label 
+                    :for="option.id"
+                    class="main-form-radio-label">{{option.title}}</label>
             </div>
         </div>
     </div>
