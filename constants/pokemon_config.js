@@ -1,1 +1,1 @@
-export const POKEMON_PER_PAGE = 'is awesome'
+export const POKEMON_PER_PAGE = 20;

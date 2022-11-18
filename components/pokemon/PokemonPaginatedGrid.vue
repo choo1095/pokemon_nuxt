@@ -14,9 +14,12 @@
 
         <div class="flex justify-between mt-12">
             <PokeballButton 
+                v-if="showPreviousButton"
                 @onClick="onTapPreviousPage"
                 title="Previous pokemanz"/>
+            <div v-else></div>
             <PokeballButton 
+                v-if="hasNextPage"
                 @onClick="onTapNextPage"
                 :isPokeballOnLeftSide="true"
                 title="More pokemanz"/>
@@ -42,6 +45,7 @@ export default {
             totalPokemonList: [],
             currentOffset: 0,
             totalLoadedOffset: 0,
+            showNextButton: true,
         }
     },
     props: {
@@ -57,22 +61,31 @@ export default {
             type: Number,
             required: true,
         },
+        hasNextPage: {
+            type: Boolean,
+            default: true,
+        }
     },
     computed: {
         displayedPokemonList() {
             if (this.totalPokemonList.length === 0) {
                 return [];
-            } else if (this.currentOffset > POKEMON_PER_PAGE) {
-                console.log(`POKEMON PER PAGE ${POKEMON_PER_PAGE}`)
-                console.log(`currentOffset ${currentOffset}`)
-                return this.totalPokemonList.slice(currentOffset - POKEMON_PER_PAGE, currentOffset);
-            } else {
-                return this.totalPokemonList;
+            } else if (this.currentOffset < this.totalLoadedOffset) {
+                return this.totalPokemonList.slice(this.currentOffset - POKEMON_PER_PAGE, this.currentOffset);
+            } else if (this.totalLoadedOffset > POKEMON_PER_PAGE) {
+                console.log(`[PokemonPaginatedGrid] totalLoadedOffset ${this.totalLoadedOffset}`)
+                return this.totalPokemonList.slice(this.totalLoadedOffset - POKEMON_PER_PAGE, this.totalLoadedOffset);
             }
+            
+            return this.pokemonList;
         },
         progressBar() {
             return this.currentOffset / this.maxCount;
+        },
+        showPreviousButton() {
+            return this.currentOffset > POKEMON_PER_PAGE;
         }
+        
     },
     watch: {
         pokemonList(value) {
@@ -81,19 +94,21 @@ export default {
         offset(value) {
             this.totalLoadedOffset = value;
             this.currentOffset = value;
+        },
+        hasNextPage(value) {
+            this.showNextButton = value;
         }
     },
     methods: {
         onTapNextPage() {
-            this.$emit('on-tap-next-page');
+            if (this.currentOffset === this.totalLoadedOffset) {
+                this.$emit('on-tap-next-page');
+            } else {
+                this.currentOffset += POKEMON_PER_PAGE;
+            }
         },
         onTapPreviousPage() { 
-            if (this.currentOffset === this.totalLoadedOffset) {
-                this.$emit('on-tap-previous-page');
-            } else {
-                this.currentOffset - POKEMON_PER_PAGE;
-            }
-            
+            this.currentOffset -= POKEMON_PER_PAGE;
         },
     },
 }

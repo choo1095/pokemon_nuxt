@@ -15,7 +15,6 @@
           :pokemonList="pokemonList"
           :maxCount="totalPokemonCount"
           :offset="currentOffset"
-          @on-tap-previous-page="onTapPreviousPage"
           @on-tap-next-page="onTapNextPage" />
         <LoadingIndicator
           :class="['top-0 left-[50%] -translate-x-1/2', isLoading ? 'absolute' : 'hidden']" />
@@ -66,18 +65,17 @@ export default Vue.extend({
     },
     async retrievePokemonList() {
       this.isLoading = true;
-
+      setTimeout('', 5000);
       const getAllPokemonsAPI = await getAllPokemon(this.currentOffset);
 
       this.isLoading = false;
 
-      const pokemonListWithId = getAllPokemonsAPI.results.map((pokemon, index) => ({...pokemon, id: index+1})); // TODO: REMOVE INDEX
+      const pokemonListWithId = getAllPokemonsAPI.results.map(
+        (pokemon, index) => ({...pokemon, id: this.pokemonList.length + index+1})
+      );
       this.pokemonList.push.apply(this.pokemonList, pokemonListWithId);
       this.totalPokemonCount = getAllPokemonsAPI.count;
       this.currentOffset += getAllPokemonsAPI.results.length;
-    },
-    onTapPreviousPage() {
-      alert('previous')
     },
     onTapNextPage() {
       this.retrievePokemonList()
