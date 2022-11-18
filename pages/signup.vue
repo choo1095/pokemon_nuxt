@@ -46,20 +46,20 @@
                 <RadioFormField 
                     labelTitle="Gender *" 
                     v-model="gender" 
-                    :options="getGenderOptions"
+                    :options="genderOptions"
                     :required="true" 
                     name="gender" />
 
                 <DropDownFormField
                     labelTitle="Nationality *"
                     v-model="nationality"
-                    :options="getNationalityOptions"
+                    :options="nationalityOptions"
                     :required="true" />
 
                 <CheckboxFormField 
                     labelTitle="List of Hobbies"
                     v-model="hobbies"
-                    :options="getHobbyOptions" />
+                    :options="hobbyOptions" />
 
                 <input type="submit" 
                     :disabled="!isSignUpEnabled" 
@@ -78,6 +78,7 @@ import RadioFormField from '@/components/reusable/RadioFormField.vue'
 import DropDownFormField from '@/components/reusable/DropDownFormField.vue'
 import CheckboxFormField from '@/components/reusable/CheckboxFormField.vue'
 import { mapGetters } from 'vuex'
+import { GENDER_OPTIONS, NATIONALITY_OPTIONS, HOBBY_OPTIONS } from '@/constants/';
 
 export default {
     name: 'SignUp',
@@ -142,11 +143,15 @@ export default {
         isBothPasswordsMatch() {
             return this.password == this.confirmPassword;
         },
-        ...mapGetters({
-            getGenderOptions: 'constants/getGenderOptions',
-            getNationalityOptions: 'constants/getNationalityOptions',
-            getHobbyOptions: 'constants/getHobbyOptions'
-        }),
+        genderOptions() {
+            return GENDER_OPTIONS;
+        },
+        nationalityOptions() {
+            return NATIONALITY_OPTIONS;
+        },
+        hobbyOptions() {
+            return HOBBY_OPTIONS;
+        }
     }
 }
 </script>

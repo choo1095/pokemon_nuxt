@@ -29,7 +29,7 @@
                     :disabled="!isEditingProfile" 
                     labelTitle="Gender" 
                     v-model="selectedGender" 
-                    :options="getGenderOptions"
+                    :options="genderOptions"
                     :required="true"
                     name="gender" />
 
@@ -37,14 +37,14 @@
                     labelTitle="Nationality"
                     :disabled="!isEditingProfile"
                     v-model="selectedNationality"
-                    :options="getNationalityOptions"
+                    :options="nationalityOptions"
                     :required="true" />
 
                 <CheckboxFormField 
                     :disabled="!isEditingProfile"
                     labelTitle="List of Hobbies"
                     v-model="selectedHobbies"
-                    :options="getHobbyOptions" />
+                    :options="hobbyOptions" />
                 
                 <button v-if="!isEditingProfile" @click="onTapEditProfile" class="red-button self-center mt-20">Edit Profile</button>
                 <button v-else @click="onTapSaveProfile" class="red-button self-center mt-20">Save Profile</button>
@@ -64,6 +64,7 @@ import RadioFormField from '@/components/reusable/RadioFormField.vue'
 import DropDownFormField from '@/components/reusable/DropDownFormField.vue'
 import CheckboxFormField from '@/components/reusable/CheckboxFormField.vue'
 import { mapGetters } from 'vuex'
+import { GENDER_OPTIONS, NATIONALITY_OPTIONS, HOBBY_OPTIONS } from '@/constants/';
 
 export default {
     name: 'Profile',
@@ -132,10 +133,20 @@ export default {
     computed: {
         ...mapGetters({
             getCurrentUser: 'user/getCurrentUser',
-            getNationalityOptions: 'constants/getNationalityOptions',
-            getGenderOptions: 'constants/getGenderOptions',
-            getHobbyOptions: 'constants/getHobbyOptions',
+            // getNationalityOptions: 'constants/getNationalityOptions',
+            // getGenderOptions: 'constants/getGenderOptions',
+            // getHobbyOptions: 'constants/getHobbyOptions',
         }),
+        genderOptions() {
+            return GENDER_OPTIONS;
+        },
+        nationalityOptions() {
+            return NATIONALITY_OPTIONS;
+        },
+        hobbyOptions() {
+            return HOBBY_OPTIONS;
+        }
+        
     }
 }
 </script>
