@@ -2,12 +2,12 @@
   <div>
     <VueSlickCarousel 
       class="w-full"
-      v-if="numberOfItemsToShow > 0"
+      v-if="slicedPokemonList.length > 0"
       v-bind="settings">
         <PokemonCard 
-          v-for="i in 16" 
-          :key="i"
-          :pokemon="{ id: i, name: 'pokachu pokachu pokachu pokachu pokachu pokachu' }"
+          v-for="pokemon in slicedPokemonList" 
+          :key="pokemon.id"
+          :pokemon="pokemon"
           />
     </VueSlickCarousel>
     <div v-else></div>
@@ -29,8 +29,15 @@ export default {
   },
   data() { 
     return {
-      numberOfItemsToShow: 0,
+      numberOfItemsToShowBasedOnWindowSize: 0,
+      slicedPokemonList: [],
     }
+  },
+  props: {
+    pokemonList: {
+      type: Array,
+      required: true,
+    },
   },
   computed: {
     settings: function() {
@@ -40,31 +47,45 @@ export default {
         "infinite": true,
         "speed": 500,
         "touchThreshold": 5,
-        "slidesToShow": this.numberOfItemsToShow,
-        "slidesToScroll": this.numberOfItemsToShow,
+        "slidesToShow": this.numberOfSlides,
+        "slidesToScroll": this.numberOfSlides,
         "arrows": true,
       }
+    },
+    numberOfSlides() {
+      if (this.pokemonList.length === 0) return 0;
+      return this.numberOfItemsToShowBasedOnWindowSize;
+    },
+    returnSlicedPokemonList() {
+      if (this.pokemonList.length === 0) return [];
+      return this.pokemonList.slice(0, 16)
+    }
+  },
+  watch: {
+    pokemonList() {
+      this.slicedPokemonList = this.returnSlicedPokemonList
     }
   },
   methods: {
     setNumberOfItems() {
       const screenWidth = window.innerWidth;
       if (screenWidth > 1280) { // xl
-        this.numberOfItemsToShow = 4;
+        this.numberOfItemsToShowBasedOnWindowSize = 4;
       } else if (screenWidth > 1024) { // lg 
-        this.numberOfItemsToShow = 3;
+        this.numberOfItemsToShowBasedOnWindowSize = 3;
       } else if (screenWidth > 768) { // md
-        this.numberOfItemsToShow = 2;
+        this.numberOfItemsToShowBasedOnWindowSize = 2;
       } else if (screenWidth > 0) {
-        this.numberOfItemsToShow = 1;
+        this.numberOfItemsToShowBasedOnWindowSize = 1;
       }
     },
     onResize(_) {
       this.setNumberOfItems();
-    }
+    },
   },
   mounted() {
     this.setNumberOfItems()
+
     window.addEventListener('resize', this.onResize)
   },
   unmounted() {

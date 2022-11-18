@@ -5,11 +5,22 @@
       <div class="relative">
         <PokeballSemicircleBackground heightClass="h-[42rem]" />
         <PokemonCarousel 
-          class="absolute top-32 left-0 right-0 mx-24" />
+          class="absolute top-32 left-0 right-0 mx-24" 
+          :pokemonList="pokemonList" />
       </div>
       <h1 class="text-blue362056 text-center text-2xl font-medium mt-10 mb-10">SHOP ALL</h1>
-      <PokemonPaginatedGrid 
-        :pokemonList="[]"/>
+      <div class="relative">
+        <PokemonPaginatedGrid 
+          :class="isLoading ? 'hidden' : ''"
+          :pokemonList="pokemonList"
+          :maxCount="totalPokemonCount"
+          :offset="currentOffset"
+          @on-tap-previous-page="onTapPreviousPage"
+          @on-tap-next-page="onTapNextPage" />
+        <LoadingIndicator
+          :class="['top-0 left-[50%] -translate-x-1/2', isLoading ? 'absolute' : 'hidden']" />
+      </div>
+      
     <!-- </div> -->
   </div>
 </template> 
@@ -21,12 +32,19 @@ import PokeballSemicircleBackground from '@/components/reusable/PokeballSemicirc
 import PokemonCarousel from '@/components/pokemon/PokemonCarousel.vue'
 import PokemonCard from '@/components/pokemon/PokemonCard.vue';
 import PokemonPaginatedGrid from '@/components/pokemon/PokemonPaginatedGrid.vue';
+import LoadingIndicator from '@/components/reusable/LoadingIndicator.vue'
+import { getAllPokemon } from '@/api/pokemon.js';
 
 export default Vue.extend({
   name: 'IndexPage',
   data() {
     return {
       isShowSplashScreen: true,
+      pokemonList: [],
+      totalPokemonCount: 0,
+      currentOffset: 0,
+
+      isLoading: false,
     }
   },
   components: {
@@ -35,6 +53,7 @@ export default Vue.extend({
     PokemonCarousel,
     PokemonCard,
     PokemonPaginatedGrid,
+    LoadingIndicator,
   },
   methods: {
     initUserData() {
@@ -44,11 +63,32 @@ export default Vue.extend({
           this.$store.dispatch('user/login', user)
         }
       }
+    },
+    async retrievePokemonList() {
+      this.isLoading = true;
+
+      const getAllPokemonsAPI = await getAllPokemon(this.currentOffset);
+
+      this.isLoading = false;
+
+      const pokemonListWithId = getAllPokemonsAPI.results.map((pokemon, index) => ({...pokemon, id: index+1})); // TODO: REMOVE INDEX
+      this.pokemonList.push.apply(this.pokemonList, pokemonListWithId);
+      this.totalPokemonCount = getAllPokemonsAPI.count;
+      this.currentOffset += getAllPokemonsAPI.results.length;
+    },
+    onTapPreviousPage() {
+      alert('previous')
+    },
+    onTapNextPage() {
+      this.retrievePokemonList()
     }
   },
   async created() {
     this.initUserData()
     this.isShowSplashScreen = true;
+
+    this.retrievePokemonList();
+    
   },
   async mounted() {
     setTimeout(() => this.isShowSplashScreen = false, 3000);
