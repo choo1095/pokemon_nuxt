@@ -48,7 +48,7 @@ export default Vue.extend({
       pokemonList: [],
       totalPokemonCount: 0,
       currentOffset: 0,
-      isLoadingPage: true,
+      isLoadingPage: false,
       isLoadingMore: false,
     }
   },
@@ -72,7 +72,6 @@ export default Vue.extend({
     },
     async retrievePokemonList() {
       this.isLoadingMore = true;
-      setTimeout('', 5000);
       const getAllPokemonsAPI = await getAllPokemon(this.currentOffset);
 
       this.isLoadingMore = false;
@@ -97,7 +96,6 @@ export default Vue.extend({
   },
   async mounted() {
     setTimeout(() => this.isShowSplashScreen = false, 3000);
-    setTimeout(() => this.isLoadingPage = false, 3000);
   },
 })
 </script>

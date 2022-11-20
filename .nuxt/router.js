@@ -5,10 +5,10 @@ import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
 const _5b750e65 = () => interopDefault(import('..\\pages\\cart.vue' /* webpackChunkName: "pages/cart" */))
-const _18c22fe6 = () => interopDefault(import('..\\pages\\details.vue' /* webpackChunkName: "pages/details" */))
 const _775c73f4 = () => interopDefault(import('..\\pages\\profile.vue' /* webpackChunkName: "pages/profile" */))
 const _2d9f0ab2 = () => interopDefault(import('..\\pages\\signin.vue' /* webpackChunkName: "pages/signin" */))
 const _04725dc6 = () => interopDefault(import('..\\pages\\signup.vue' /* webpackChunkName: "pages/signup" */))
+const _285eb00c = () => interopDefault(import('..\\pages\\pokemon\\_id.vue' /* webpackChunkName: "pages/pokemon/_id" */))
 const _4e0e7146 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -27,10 +27,6 @@ export const routerOptions = {
     component: _5b750e65,
     name: "cart"
   }, {
-    path: "/details",
-    component: _18c22fe6,
-    name: "details"
-  }, {
     path: "/profile",
     component: _775c73f4,
     name: "profile"
@@ -42,6 +38,10 @@ export const routerOptions = {
     path: "/signup",
     component: _04725dc6,
     name: "signup"
+  }, {
+    path: "/pokemon/:id?",
+    component: _285eb00c,
+    name: "pokemon-id"
   }, {
     path: "/",
     component: _4e0e7146,

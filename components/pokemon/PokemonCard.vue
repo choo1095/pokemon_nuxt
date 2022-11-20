@@ -20,7 +20,7 @@ export default {
     methods: {
         onTapCard() {
             this.$router.push({
-                path: 'details'
+                path: `pokemon/${this.pokemon.id}`,
             })
         }
     }
