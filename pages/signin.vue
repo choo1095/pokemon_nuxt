@@ -40,7 +40,20 @@ export default {
     },
     methods: {
         onSubmitSignin() {
-            alert('sign in ');
+            this.$swal('Successfully logged in!')
+                .then((_) => {
+                    this.$store.dispatch('user/login', {
+                        name: "noob haha",
+                        email: this.email,
+                        gender: "male",
+                        nationality: "bogosbinted",
+                        hobbies: ["no-hobby"],
+                    });
+                    this.$router.push({
+                        path: '/'
+                    })
+                });
+            
         },
         onTapSignUp() {
             this.$router.push({

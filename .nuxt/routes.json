@@ -3,36 +3,42 @@
     "name": "cart",
     "path": "/cart",
     "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\pokemon_nuxt\\\\pages\\\\cart.vue",
-    "chunkName": "pages/cart"
+    "chunkName": "pages/cart",
+    "_name": "_5b750e65"
   },
   {
     "name": "details",
     "path": "/details",
     "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\pokemon_nuxt\\\\pages\\\\details.vue",
-    "chunkName": "pages/details"
+    "chunkName": "pages/details",
+    "_name": "_18c22fe6"
   },
   {
     "name": "profile",
     "path": "/profile",
     "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\pokemon_nuxt\\\\pages\\\\profile.vue",
-    "chunkName": "pages/profile"
+    "chunkName": "pages/profile",
+    "_name": "_775c73f4"
   },
   {
     "name": "signin",
     "path": "/signin",
     "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\pokemon_nuxt\\\\pages\\\\signin.vue",
-    "chunkName": "pages/signin"
+    "chunkName": "pages/signin",
+    "_name": "_2d9f0ab2"
   },
   {
     "name": "signup",
     "path": "/signup",
     "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\pokemon_nuxt\\\\pages\\\\signup.vue",
-    "chunkName": "pages/signup"
+    "chunkName": "pages/signup",
+    "_name": "_04725dc6"
   },
   {
     "name": "index",
     "path": "/",
     "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\pokemon_nuxt\\\\pages\\\\index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_4e0e7146"
   }
 ]
