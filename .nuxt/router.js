@@ -4,12 +4,12 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _5b750e65 = () => interopDefault(import('..\\pages\\cart.vue' /* webpackChunkName: "pages/cart" */))
-const _775c73f4 = () => interopDefault(import('..\\pages\\profile.vue' /* webpackChunkName: "pages/profile" */))
-const _2d9f0ab2 = () => interopDefault(import('..\\pages\\signin.vue' /* webpackChunkName: "pages/signin" */))
-const _04725dc6 = () => interopDefault(import('..\\pages\\signup.vue' /* webpackChunkName: "pages/signup" */))
-const _285eb00c = () => interopDefault(import('..\\pages\\pokemon\\_id.vue' /* webpackChunkName: "pages/pokemon/_id" */))
-const _4e0e7146 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
+const _9dc480a4 = () => interopDefault(import('../pages/cart.vue' /* webpackChunkName: "pages/cart" */))
+const _9d695bea = () => interopDefault(import('../pages/profile.vue' /* webpackChunkName: "pages/profile" */))
+const _7771fdb0 = () => interopDefault(import('../pages/signin.vue' /* webpackChunkName: "pages/signin" */))
+const _e7ef57b4 = () => interopDefault(import('../pages/signup.vue' /* webpackChunkName: "pages/signup" */))
+const _2a2d8b60 = () => interopDefault(import('../pages/pokemon/_id.vue' /* webpackChunkName: "pages/pokemon/_id" */))
+const _38663f34 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
 
@@ -24,27 +24,27 @@ export const routerOptions = {
 
   routes: [{
     path: "/cart",
-    component: _5b750e65,
+    component: _9dc480a4,
     name: "cart"
   }, {
     path: "/profile",
-    component: _775c73f4,
+    component: _9d695bea,
     name: "profile"
   }, {
     path: "/signin",
-    component: _2d9f0ab2,
+    component: _7771fdb0,
     name: "signin"
   }, {
     path: "/signup",
-    component: _04725dc6,
+    component: _e7ef57b4,
     name: "signup"
   }, {
     path: "/pokemon/:id?",
-    component: _285eb00c,
+    component: _2a2d8b60,
     name: "pokemon-id"
   }, {
     path: "/",
-    component: _4e0e7146,
+    component: _38663f34,
     name: "index"
   }],
 

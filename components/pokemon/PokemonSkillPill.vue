@@ -1,18 +1,33 @@
 <template>
     <div class="bg-white h-10 rounded-full flex justify-between  items-center px-6">
-        <p class="font-medium text-base text-black ">{{ skillName }}</p>
-        <img class="h-5 w-5 bg-blue-900 rounded-full" src="~/assets/img/types/bug.svg" alt="">
+        <p class="font-medium text-base text-black ">{{ moveName }}</p>
+        <PokemonTypePill 
+            :type="moveType"/>
     </div>
 </template>
 
 <script>
+import PokemonTypePill from '@/components/pokemon/PokemonTypePill.vue';
+
 export default {
     name: 'PokemonSkillPill',
+    components: {
+        PokemonTypePill,
+    },
     props: {
-        skillName: {
-            type: String,
+        move: {
+            type: Object,
             required: true,
         },
     },
+    computed: {
+        moveName() {
+            const move = this.move.name;
+            return this.$capitalizeFirstLetter(this.$replaceDashesWithSpaces(move));
+        },
+        moveType() {
+            return this.move.type.name;
+        }
+    }
 }
 </script>

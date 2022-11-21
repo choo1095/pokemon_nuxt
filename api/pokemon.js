@@ -16,4 +16,10 @@ const getPokemonDetails = async (id) => {
     return (await pokemonDetails).data;
 }
 
-export { getAllPokemon, getPokemonDetails };
+const getPokemonMoveDetails = async (url) => {
+    let pokemonMoveDetails = axios.get(url);
+    return (await pokemonMoveDetails).data;
+}
+
+
+export { getAllPokemon, getPokemonDetails, getPokemonMoveDetails };
