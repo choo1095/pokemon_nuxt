@@ -18,7 +18,7 @@
             
             <IconButtonWithIndicator 
                 :featherIconName="`shopping-cart`"
-                :indicatorValue="1"
+                :indicatorValue="getCartQuantity"
                 @onClick="onTapCart"
             />    
         </div>
@@ -62,7 +62,8 @@ export default {
     },
     computed: {
         ...mapGetters({
-            getIsAuthenticated: 'user/getIsAuthenticated'
+            getIsAuthenticated: 'user/getIsAuthenticated',
+            getCartQuantity: 'cart/getCartQuantity',
         }),
     },
 }

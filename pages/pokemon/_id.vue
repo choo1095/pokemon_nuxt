@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div v-if="isLoading === false" class="bg-detail-blue-background pb-24 relative">
+    <div
+      v-if="isLoading === false"
+      class="bg-detail-blue-background pb-24 relative"
+    >
       <div class="relative">
         <PokeballSemicircleBackground heightClass="h-[20rem]" />
         <div class="absolute top-28 left-0 right-0 flex flex-col text-center">
@@ -35,7 +38,11 @@
           </div>
 
           <div class="flex flex-col lg:grid lg:grid-cols-2">
-            <img :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonDetail.id}.png`" class="mb-6" alt="" />
+            <img
+              :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonDetail.id}.png`"
+              class="mb-6"
+              alt=""
+            />
             <div class="md:ml-8 flex flex-col">
               <div
                 class="
@@ -50,9 +57,7 @@
                 "
               >
                 <PokemonDetailPill title="Type" class="mb-4">
-                  <PokemonTypePill 
-                    :type="pokemonType"/>
-
+                  <PokemonTypePill :type="pokemonType" />
                 </PokemonDetailPill>
 
                 <PokemonDetailPill title="Ability" class="mb-16">
@@ -83,7 +88,7 @@
                 <p class="font-medium text-2xl mb-3">{{ pokemonName }}</p>
                 <div class="flex justify-between items-center">
                   <p class="text-xl">{{ pokemonPrice }}</p>
-                  <StepperButtons />
+                  <StepperButtons @onUpdateValue="onTapQuantity" />
                 </div>
               </div>
 
@@ -117,9 +122,9 @@ import PokemonDetailPill from "@/components/reusable/PokemonDetailPill.vue";
 import PokemonSkillPill from "@/components/pokemon/PokemonSkillPill.vue";
 import StepperButtons from "@/components/reusable/StepperButtons.vue";
 import LoadingIndicator2 from "@/components/reusable/LoadingIndicator2.vue";
-import PokemonTypePill from '@/components/pokemon/PokemonTypePill.vue';
+import PokemonTypePill from "@/components/pokemon/PokemonTypePill.vue";
 import { getPokemonDetails, getPokemonMoveDetails } from "@/api/pokemon.js";
-import { POKEMON_PRICE } from '@/constants/';
+import { POKEMON_PRICE } from "@/constants/";
 
 export default {
   components: {
@@ -136,14 +141,22 @@ export default {
       isLoading: false,
       pokemonDetail: null,
       moveList: [],
+      quantity: 0,
     };
   },
   methods: {
     onTapBack() {
       this.$router.go(-1);
     },
+    onTapQuantity(value) {
+      this.quantity = value;
+    },
     onTapAddToCart() {
-      alert("added to cart");
+      this.$store.dispatch("cart/addToCart", {
+        pokemon: this.pokemonDetail,
+        quantity: this.quantity,
+      });
+      this.$swal('Added to cart!');
     },
     onTapBuyNow() {
       alert("no");
@@ -161,21 +174,20 @@ export default {
       this.isLoading = true;
 
       const getPokemonMoveDetailsAPI = await getPokemonMoveDetails(url);
-      console.log(getPokemonMoveDetailsAPI);
-      
+      console.log("HELP WHY IS THIS BEING CALLED");
+
       this.isLoading = false;
 
       this.moveList.push(getPokemonMoveDetailsAPI);
     },
     async loadPokemonInfo() {
-      await this.retrievePokemonDetails()
-        .then(async (_) => {
-            const pokemonMoveList = this.pokemonDetail.moves.slice(0, 4);
-            for (let i = 0; i < pokemonMoveList.length; i++) {
-              await this.retrieveSkillDetails(pokemonMoveList[i].move.url);
-            }
-        });
-    }
+      await this.retrievePokemonDetails().then(async (_) => {
+        const pokemonMoveList = this.pokemonDetail.moves.slice(0, 4);
+        for (let i = 0; i < pokemonMoveList.length; i++) {
+          await this.retrieveSkillDetails(pokemonMoveList[i].move.url);
+        }
+      });
+    },
   },
   computed: {
     pokemonId() {
@@ -189,13 +201,14 @@ export default {
       return this.pokemonDetail.types[0].type.name;
     },
     pokemonAbility() {
-      const ability = this.pokemonDetail.abilities.find(element => element.is_hidden === false)
-        .ability.name;
+      const ability = this.pokemonDetail.abilities.find(
+        (element) => element.is_hidden === false
+      ).ability.name;
       return this.$capitalizeFirstLetter(ability);
     },
     pokemonPrice() {
       return POKEMON_PRICE;
-    }
+    },
   },
   async created() {
     this.loadPokemonInfo();

@@ -3,36 +3,42 @@
     "name": "cart",
     "path": "/cart",
     "component": "/Users/admin/Documents/GitHub/pokemon_nuxt/pages/cart.vue",
-    "chunkName": "pages/cart"
+    "chunkName": "pages/cart",
+    "_name": "_9dc480a4"
   },
   {
     "name": "profile",
     "path": "/profile",
     "component": "/Users/admin/Documents/GitHub/pokemon_nuxt/pages/profile.vue",
-    "chunkName": "pages/profile"
+    "chunkName": "pages/profile",
+    "_name": "_9d695bea"
   },
   {
     "name": "signin",
     "path": "/signin",
     "component": "/Users/admin/Documents/GitHub/pokemon_nuxt/pages/signin.vue",
-    "chunkName": "pages/signin"
+    "chunkName": "pages/signin",
+    "_name": "_7771fdb0"
   },
   {
     "name": "signup",
     "path": "/signup",
     "component": "/Users/admin/Documents/GitHub/pokemon_nuxt/pages/signup.vue",
-    "chunkName": "pages/signup"
+    "chunkName": "pages/signup",
+    "_name": "_e7ef57b4"
   },
   {
     "name": "pokemon-id",
     "path": "/pokemon/:id?",
     "component": "/Users/admin/Documents/GitHub/pokemon_nuxt/pages/pokemon/_id.vue",
-    "chunkName": "pages/pokemon/_id"
+    "chunkName": "pages/pokemon/_id",
+    "_name": "_2a2d8b60"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/admin/Documents/GitHub/pokemon_nuxt/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_38663f34"
   }
 ]

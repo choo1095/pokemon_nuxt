@@ -10,9 +10,9 @@
         <div class="center">
             <div class="flex flex-col justify-center w-full md:w-2/3">
                 <PokemonCartItem 
-                    v-for="i in 5"
-                    :key=i
-                    :cartItem="{ id: '100', name: 'pokachu' }"
+                    v-for="cart in getCartItems"
+                    :key="cart"
+                    :cartItem="cart"
                     @onUpdateQuantity="onUpdateQuantity($event, i)" />
                 <div class="flex justify-center md:justify-end mt-12">
                     <WhiteButton 
@@ -33,6 +33,7 @@ import PokeballSemicircleBackground from '@/components/reusable/PokeballSemicirc
 import PokemonCartItem from '@/components/pokemon/PokemonCartItem.vue'
 import WhiteButton from '@/components/reusable/WhiteButton.vue'
 import RedButton from '@/components/reusable/RedButton.vue'
+import { mapGetters } from 'vuex'
 
 export default {
     name: 'Cart',
@@ -55,5 +56,10 @@ export default {
             alert("no!!!")
         }
     },
+    computed: {
+        ...mapGetters({
+            getCartItems: 'cart/getCartItems',
+        })
+    }
 }
 </script>

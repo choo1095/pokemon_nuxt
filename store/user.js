@@ -21,12 +21,10 @@ export const mutations = {
             email: payload.email,
         }
         localStorage.setItem('user', JSON.stringify(payload));
-        console.log(`MUTATION MESSAGE: User set - ${JSON.stringify(payload)}`);
     },
     removeCurrentUser(state) {
         state.currentUser = null;
         localStorage.removeItem('user')
-        console.log(`MUTATION MESSAGE: User remove`);
     }
 }
 

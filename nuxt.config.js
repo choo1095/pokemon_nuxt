@@ -67,5 +67,11 @@ export default {
         autoprefixer: {},
       },
     },
+  },
+
+  mode: 'spa',
+
+  router: {
+    middleware: ['user', 'cart']
   }
 }

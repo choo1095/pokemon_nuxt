@@ -62,14 +62,6 @@ export default Vue.extend({
     LoadingIndicator2
   },
   methods: {
-    initUserData() {
-      if (process.browser) {
-        let user = JSON.parse(localStorage.getItem('user'))
-        if (user !== null) {
-          this.$store.dispatch('user/login', user)
-        }
-      }
-    },
     async retrievePokemonList() {
       this.isLoadingMore = true;
       const getAllPokemonsAPI = await getAllPokemon(this.currentOffset);
@@ -88,7 +80,6 @@ export default Vue.extend({
     }
   },
   async created() {
-    this.initUserData()
     this.isShowSplashScreen = true;
 
     this.retrievePokemonList();
