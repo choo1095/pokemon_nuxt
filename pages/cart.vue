@@ -15,10 +15,12 @@
                     :cartItem="cart"
                     @onUpdateQuantity="onUpdateQuantity($event, i)" />
                 <div class="flex justify-center md:justify-end mt-12">
-                    <WhiteButton 
-                        title="Continue Shopping"
-                        class="mr-5"
-                        @onClick="onTapContinueShopping"/>
+                    <nuxt-link to="/">
+                        <WhiteButton 
+                            title="Continue Shopping"
+                            class="mr-5" />
+                    </nuxt-link>
+                    
                     <RedButton
                         title="Checkout"
                         @onClick="onTapCheckout" />
@@ -46,11 +48,6 @@ export default {
     methods: {
         onUpdateQuantity(quantity, index) {
             console.log(`${quantity} || ${index}`)
-        },
-        onTapContinueShopping() {
-            this.$router.push({
-                path: '/'
-            })
         },
         onTapCheckout() {
             alert("no!!!")

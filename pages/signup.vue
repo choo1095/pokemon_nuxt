@@ -4,7 +4,7 @@
             <PokeballSemicircleBackground heightClass="h-[27rem]" />
             <div class="absolute top-28 left-0 right-0 flex flex-col text-center">
                 <h1 class="font-semibold text-5xl ">SIGN UP</h1>
-                <p class="mt-9 text-black221F1E text-base">Already have an account? <button @click="onTapSignIn" class="text-blue1C5DAB">Login</button></p>
+                <p class="mt-9 text-black221F1E text-base">Already have an account? <nuxt-link to="/signin" class="text-blue1C5DAB">Login</nuxt-link></p>
                 <h1 class="mt-9 font-semibold text-black303030 text-2xl">WELCOME !!!!!!!!!!!!!!!!!</h1>
             </div>
             <div class="hidden sm:block bg-pikachu-wave absolute bg-img-single w-[139px] h-[125px] bottom-7 right-[25%]"></div>   
@@ -102,11 +102,6 @@ export default {
         }
     },
     methods: {
-        onTapSignIn() {
-            this.$router.push({
-                path: 'signin'
-            })
-        },
         onSubmitSignup() {
             this.$store.dispatch('user/login', {
                 name: this.name,
