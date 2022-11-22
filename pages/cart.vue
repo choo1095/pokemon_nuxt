@@ -10,10 +10,11 @@
         <div class="center">
             <div class="flex flex-col justify-center w-full md:w-2/3">
                 <PokemonCartItem 
-                    v-for="cart in getCartItems"
-                    :key="cart"
+                    v-for="(cart, index) in getCartItems"
+                    :key="cart.key"
                     :cartItem="cart"
-                    @onUpdateQuantity="onUpdateQuantity($event, i)" />
+                    @onUpdateQuantity="onUpdateQuantity($event, index)"
+                    @onClickRemove="onClickRemove(index)" />
                 <div class="flex justify-center md:justify-end mt-12">
                     <nuxt-link to="/">
                         <WhiteButton 
@@ -47,10 +48,23 @@ export default {
     },
     methods: {
         onUpdateQuantity(quantity, index) {
-            console.log(`${quantity} || ${index}`)
+            this.$store.dispatch('cart/setCartItemQuantity', {
+                index: index,
+                quantity: quantity,
+            });
         },
         onTapCheckout() {
             alert("no!!!")
+        },
+        onClickRemove(index) {
+            this.$store.dispatch('cart/removeFromCart', index);
+            this.$swal.fire({
+                'text': 'Removed from cart!',
+                'toast': true,
+                'timer': 2000,
+                'position': 'top-end',
+                'showConfirmButton': false,
+            });
         }
     },
     computed: {

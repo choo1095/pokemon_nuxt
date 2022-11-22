@@ -13,11 +13,25 @@ export const getters = {
 
 export const mutations = {
     setLastCartItem(state, payload) {
-        state.cartItems.push(payload)
+        const newCartItem = {
+            ...payload, 
+            key: state.cartItems.length !== 0
+                ? state.cartItems[state.cartItems.length - 1].key + 1
+                : 0
+        };
+        state.cartItems.push(newCartItem)
+        localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
+    },
+    removeFromCart(state, index) {
+        state.cartItems.splice(index, 1);
         localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
     },
     setCartItems(state, payload) {
-        state.cartItems = payload
+        state.cartItems = payload;
+    },
+    setCartItemQuantity(state, payload) {
+        state.cartItems[payload.index].quantity = payload.quantity;
+        localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
     }
 }
 
@@ -27,5 +41,11 @@ export const actions = {
     },
     setCartItems({ commit }, payload) {
         commit('setCartItems', payload);
+    },
+    removeFromCart({ commit }, payload) {
+        commit('removeFromCart', payload)
+    },
+    setCartItemQuantity({ commit }, payload) {
+        commit('setCartItemQuantity', payload);
     }
 }

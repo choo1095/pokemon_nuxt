@@ -88,7 +88,9 @@
                 <p class="font-medium text-2xl mb-3">{{ pokemonName }}</p>
                 <div class="flex justify-between items-center">
                   <p class="text-xl">{{ pokemonPrice }}</p>
-                  <StepperButtons @onUpdateValue="onTapQuantity" />
+                  <StepperButtons 
+                    @onUpdateValue="onTapQuantity"
+                    :initialValue="quantity" />
                 </div>
               </div>
 
@@ -141,7 +143,7 @@ export default {
       isLoading: false,
       pokemonDetail: null,
       moveList: [],
-      quantity: 0,
+      quantity: 1,
     };
   },
   methods: {
@@ -207,7 +209,7 @@ export default {
       return this.$capitalizeFirstLetter(ability);
     },
     pokemonPrice() {
-      return POKEMON_PRICE;
+      return `RM ${POKEMON_PRICE.toFixed(2)}`;
     },
   },
   async created() {
